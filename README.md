@@ -169,7 +169,7 @@ class HelloPlugin(Plugin):
 ```
 
 > [!TIP]
-> Plux 需要 **Python 3.11+，且零第三方依赖**（只用标准库）。它同样锁 `4.1.13.12`，命令管道名从 `command_pipe_ready` 事件自动发现，无需手填。
+> Plux 需要 **Python 3.11+，且零第三方依赖**（只用标准库）。它同样锁 `4.1.13.12`版本，命令管道名从 `command_pipe_ready` 事件自动发现，无需手填。
 > 安装、配置与首次运行见 [Plux 快速上手](https://github.com/mnasthai/Botplux/blob/main/docs/guide/getting-started.md)。
 
 <details>
@@ -297,7 +297,7 @@ with open(LOG, "r", encoding="utf-8", errors="replace") as log:
                    IRIS（C++ 内核：注入微信、原生收发）
                         │
                         ▼
-                   微信桌面端 4.1.13.12
+                   微信桌面端
 ```
 
 IRIS 只负责"把消息读出来、把消息发出去"这一层，不做业务编排。**如果你用 Python，直接用 Plux 即可，不需要照着本仓库的协议文档手写客户端。**
