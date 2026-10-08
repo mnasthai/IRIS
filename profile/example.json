@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "profile_name": "example",
+  "description": "Profile JSON 结构模板：所有值都是占位符，必须替换为真实逆向数据后才能使用。字段含义见 docs/profile.md。",
+  "target_version": "0.0.0.0",
+  "root": {
+    "char_arr": {
+      "kTargetVersion": "0.0.0.0"
+    },
+    "u16_arr": {
+      "kVersionParts": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "uint32": {
+      "kExpectedImageSize": "0x0"
+    },
+    "size": {
+      "kBatchStride": "0x0"
+    },
+    "uptr": {
+      "kReceiveBatchRva": "0x0",
+      "kSendRequestRva": "0x0",
+      "kSendContextConstructorRva": "0x0",
+      "kSendSubmitRva": "0x0",
+      "kSendSubmitCallableVtableRva": "0x0",
+      "kRootObjectPointerRva": "0x0",
+      "kSendOuterVtableRva": "0x0",
+      "kSendItemVtableRva": "0x0",
+      "kSendContextSourceVtableRva": "0x0",
+      "kSendContextBaseVtableRva": "0x0",
+      "kAddMsgVtableRva": "0x0",
+      "kBuiltinStringVtableRva": "0x0"
+    },
+    "u8arr": {
+      "kReceiveEntry": "00",
+      "kSendEntry": "00",
+      "kSendContextConstructorEntry": "00",
+      "kSendSubmitEntry": "00"
+    },
+    "layout": {
+      "kReceiveLayout": {
+        "size": "0x0",
+        "has_bits": "0x0"
+      },
+      "kSendLayout": {
+        "size": "0x0",
+        "has_bits": "0x0"
+      }
+    },
+    "strfield": {
+      "kReceiveFrom": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kReceiveTo": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kReceiveContent": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kReceiveSource": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kReceiveAux": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kSendTo": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kSendContent": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      },
+      "kSendSource": {
+        "offset": "0x0",
+        "bit": "0x0",
+        "wrapped": false
+      }
+    },
+    "scalar_arr": {
+      "kReceiveScalars": [
+        {
+          "number": 0,
+          "offset": "0x0",
+          "bit": "0x0",
+          "wide": false,
+          "signed32": false
+        }
+      ],
+      "kSendScalars": [
+        {
+          "number": 0,
+          "offset": "0x0",
+          "bit": "0x0",
+          "wide": false,
+          "signed32": false
+        }
+      ]
+    }
+  },
+  "session": {
+    "uptr": {
+      "kRootGlobalRva": {
+        "ref": "kSomeOtherConstant"
+      },
+      "kRootVtableRva": "0x0",
+      "kRootIdentityGetterRva": "0x0",
+      "kRootServicePairGetterRva": "0x0",
+      "kRootServiceReadyRva": "0x0",
+      "kIdentityServiceVtableRva": "0x0",
+      "kIdentityReadyGetterRva": "0x0",
+      "kIdentityStringGetterRva": "0x0"
+    },
+    "size": {
+      "kRootIdentityGetterSlot": "0x0",
+      "kRootServicePairGetterSlot": "0x0",
+      "kRootServiceReadySlot": "0x0",
+      "kIdentityReadyGetterSlot": "0x0",
+      "kIdentityStringGetterSlot": "0x0",
+      "kRootServicePairOffset": "0x0",
+      "kRootExecutorPairOffset": "0x0",
+      "kIdentityReadyOffset": "0x0",
+      "kIdentityStringOffset": "0x0",
+      "kExecutorInnerOffset": "0x0",
+      "kExecutorFlagsOffset": "0x0"
+    },
+    "uint": {
+      "kAccountReadyMask": "0x0",
+      "kExecutorDummyMask": "0x0"
+    }
+  },
+  "text": {
+    "uptr": {
+      "kReferenceMessageVtableRva": "0x0"
+    },
+    "uint64": {
+      "kQuoteTypeAndSubtype": "0x0",
+      "kTypeAndSubtype": "0x0"
+    },
+    "size": {
+      "kTargetOffset": "0x0",
+      "kStateFlagOffset": "0x0",
+      "kTypeOffset": "0x0",
+      "kOptionalTextOffset": "0x0",
+      "kOptionalTextLengthOffset": "0x0",
+      "kTextByteLengthOffset": "0x0",
+      "kTextOffset": "0x0",
+      "kLocalUuidOffset": "0x0",
+      "kCopyFromUuidOffset": "0x0",
+      "kAtUserListOffset": "0x0",
+      "kReferenceIdPresentOffset": "0x0",
+      "kReferenceMessageOffset": "0x0",
+      "kReferenceDataOffset": "0x0",
+      "kReferenceObjectSize": "0x0",
+      "kReferenceTypeOffset": "0x0",
+      "kReferenceFromOffset": "0x0",
+      "kReferenceToOffset": "0x0",
+      "kReferenceSenderOffset": "0x0",
+      "kReferenceConversationOffset": "0x0",
+      "kReferenceServerIdOffset": "0x0",
+      "kReferenceMillisecondsOffset": "0x0",
+      "kReferenceTimestampOffset": "0x0",
+      "kReferenceTextOffset": "0x0",
+      "kReferenceMsgSourceOffset": "0x0",
+      "kReferencePartialDigestOffset": "0x0",
+      "kReferenceBackingPairOffset": "0x0",
+      "kReferenceMessagePresentOffset": "0x0",
+      "kCallablePayloadOffset": "0x0",
+      "kDelayedPayloadOffset": "0x0",
+      "kDelayedWeakControlOffset": "0x0",
+      "kStartupStatePairOffset": "0x0",
+      "kStartupWeakLinkPairOffset": "0x0",
+      "kSharedPairSize": "0x0",
+      "kSharedPairVectorSize": "0x0",
+      "kCallableHolderSize": "0x0",
+      "kDelayedHolderSize": "0x0",
+      "kStartupHandleSize": "0x0",
+      "kMetadataSize": "0x0"
+    },
+    "size_arr": {
+      "kReferenceIdStringOffsets": [
+        "0x0"
+      ],
+      "kReferenceMessageStringOffsets": [
+        "0x0"
+      ],
+      "kPartialStringOffsets": [
+        "0x0"
+      ]
+    }
+  },
+  "reference_message": {
+    "size": {
+      "kObjectSize": "0x0",
+      "kFromOffset": "0x0",
+      "kToOffset": "0x0",
+      "kSenderOffset": "0x0",
+      "kTextOffset": "0x0",
+      "kMsgSourceOffset": "0x0",
+      "kTypeOffset": "0x0",
+      "kSubtypeOffset": "0x0",
+      "kServerIdOffset": "0x0",
+      "kMillisecondsOffset": "0x0",
+      "kTimestampOffset": "0x0"
+    }
+  },
+  "sender": {
+    "uptr": {
+      "kTextFactoryRva": "0x0",
+      "kStringAssignRva": "0x0",
+      "kAllocateRva": "0x0",
+      "kSizedFreeRva": "0x0",
+      "kDelayedFactoryRva": "0x0",
+      "kMetadataInitRva": "0x0",
+      "kStartRva": "0x0",
+      "kQuoteMessageInitRva": "0x0",
+      "kQuoteMessageDestroyRva": "0x0",
+      "kQuoteAttachRva": "0x0",
+      "kReferenceMessageInitRva": "0x0",
+      "kReferenceMessageDestroyRva": "0x0",
+      "kQuoteFromMessageRva": "0x0",
+      "kMetadataText1Rva": "0x0",
+      "kMetadataText2Rva": "0x0"
+    },
+    "uint32": {
+      "kMetadataValue": "0x0"
+    },
+    "wchar_arr": {
+      "kWindowClass": "PLACEHOLDER"
+    },
+    "sig_arr": {
+      "kSignatures": [
+        {
+          "rva": "0x0",
+          "bytes": "00000000000000000000000000000000"
+        }
+      ]
+    }
+  },
+  "media_send": {
+    "uptr": {
+      "kImageSourceVtableRva": "0x0",
+      "kVoiceSourceVtableRva": "0x0",
+      "kImageFactoryRva": "0x0",
+      "kVoiceFactoryRva": "0x0",
+      "kWideAssignRva": "0x0"
+    },
+    "sig_arr": {
+      "kSignatures": [
+        {
+          "rva": "0x0",
+          "bytes": "00000000000000000000000000000000"
+        }
+      ]
+    }
+  },
+  "media_receive": {
+    "uptr": {
+      "kVoiceRva": "0x0",
+      "kVoiceDownloadedReturnRva": "0x0",
+      "kVoiceHandlerVtableRva": "0x0",
+      "kImageRva": "0x0",
+      "kImageHandlerVtableRva": "0x0",
+      "kMessageVtableRva": "0x0"
+    },
+    "uptr_arr": {
+      "kImageCompletedReturnRvas": [
+        "0x0"
+      ]
+    },
+    "size": {
+      "kResourceKindOffset": "0x0",
+      "kResultKindOffset": "0x0",
+      "kResultSourceOffset": "0x0",
+      "kDestinationKindOffset": "0x0",
+      "kCompletionStateOffset": "0x0"
+    },
+    "size_arr": {
+      "kImagePathOffsets": [
+        "0x0"
+      ]
+    },
+    "u8arr": {
+      "kVoiceEntry": "00",
+      "kImageEntry": "00"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+# ============================================================
+# 构建产物
+# ============================================================
+/build/
+/out/
+/bin/
+/obj/
+/x64/
+/x86/
+[Dd]ebug/
+[Rr]elease/
+*.dir/
+
+# ============================================================
+# CMake
+# ============================================================
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+cmake_install.cmake
+CTestTestfile.cmake
+install_manifest.txt
+compile_commands.json
+*.cmake
+!CMakeLists.txt
+!cmake/*.cmake
+
+# ============================================================
+# Visual Studio / MSVC
+# ============================================================
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.aps
+*.ncb
+*.sdf
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# 编译中间件与二进制（third_party 下的预编译库除外）
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.tlog
+*.res
+*.exe
+*.dll
+*.lib
+!third_party/**/*.lib
+!third_party/**/*.dll
+
+# ============================================================
+# 运行时数据 —— 绝对不要提交
+#   runtime/ 下会落盘 observer-*.jsonl（含聊天正文）
+#   以及 media/inbound、media/outbound 的真实媒体文件
+# ============================================================
+/runtime/
+observer-*.jsonl
+media/inbound/
+media/outbound/
+spool/
+
+# 测试失败时写出的诊断转储（位于运行目录）
+observer-config-fallback.txt
+
+# ============================================================
+# 微信版本 Profile
+#   真实 Profile 含针对特定微信版本逆向得到的 RVA / 虚表 / 结构体偏移，
+#   不随仓库分发（获取方式见 README 与 docs/profile.md）。
+#   只有结构模板 example.json 入库。
+# ============================================================
+/profile/*.json
+!/profile/example.json
+
+# ============================================================
+# 本地参考资料目录（不随仓库分发）
+# ============================================================
+/read/
+
+# ============================================================
+# 编辑器与操作系统
+# ============================================================
+.idea/
+.vscode/*
+!.vscode/settings.json.example
+!.vscode/launch.json.example
+*.swp
+*.swo
+*~
+Thumbs.db
+desktop.ini
+
+# JetBrains CLion 的默认构建目录（其自带的 .gitignore 不保证存在）
+cmake-build-*/

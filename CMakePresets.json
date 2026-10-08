@@ -1,0 +1,84 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "description": "共享配置：VS 2022 x64，TEMP 重定向到仓库内",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      },
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "environment": {
+        "TEMP": "${sourceDir}/build/tmp",
+        "TMP": "${sourceDir}/build/tmp"
+      },
+      "cacheVariables": {
+        "IRIS_BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "base",
+      "displayName": "Release (x64)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "debug",
+      "inherits": "base",
+      "displayName": "Debug (x64)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "displayName": "构建 Release",
+      "configurePreset": "release",
+      "configuration": "Release"
+    },
+    {
+      "name": "debug",
+      "displayName": "构建 Debug",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "release",
+      "displayName": "测试 Release",
+      "configurePreset": "release",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 300
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "测试 Debug",
+      "configurePreset": "debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 300
+      }
+    }
+  ]
+}
