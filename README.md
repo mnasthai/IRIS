@@ -53,6 +53,7 @@
 - 🖼️ **多媒体自动落盘** —— 收到的图片与语音自动保存到本地，方便直接交给大模型；
 - 📤 **多媒体主动发送** —— 发送本地图片与语音文件；
 - 🔌 **跨语言开箱即用** —— 只用命名管道和 JSON 文件，Python / Go / Node.js / Rust 都能接入；
+- 🐍 **Python 免写协议层** —— 官方 Python 运行时 **[Plux](https://github.com/mnasthai/Botplux)** 已封装组帧、握手、能力探测、幂等去重、有效期与结果分类，**业务只写插件，不用自己拼协议**；
 - 🛡️ **原生稳定** —— 基于微信官方桌面端运行，不依赖网页版协议。
 
 ---
@@ -154,7 +155,25 @@ $env:WECHATBOT_WEIXIN_EXE     = '<微信安装目录>\Weixin.exe'
 
 ### 第 3 步：写你的 Bot
 
-下面是一个完整可用的 Python 自动回复机器人，只用标准库：
+**推荐：直接用官方 Python 运行时 [Plux](https://github.com/mnasthai/Botplux)**，不必自己写协议层。组帧、`hello` 握手、能力门禁、幂等去重、有效期、重试与送达证据都由框架处理，**业务只写插件**：
+
+```python
+class HelloPlugin(Plugin):
+    manifest = PluginManifest("hello")
+
+    def register(self, registry):
+        registry.command(CommandSpec("hello", "/hello", self.hello))
+
+    def hello(self, argument, context):
+        return respond(context, text="你好")
+```
+
+> [!TIP]
+> Plux 需要 **Python 3.11+，且零第三方依赖**（只用标准库）。它同样锁 `4.1.13.12`，命令管道名从 `command_pipe_ready` 事件自动发现，无需手填。
+> 安装、配置与首次运行见 [Plux 快速上手](https://github.com/mnasthai/Botplux/blob/main/docs/guide/getting-started.md)。
+
+<details>
+<summary><b>不想引入任何依赖？展开看纯标准库手写的完整示例（协议的全部细节）</b></summary>
 
 ```python
 import json, os, struct, time
@@ -237,6 +256,8 @@ with open(LOG, "r", encoding="utf-8", errors="replace") as log:
 > 持续模式默认带 1 秒发送间隔冷却，回复过快会拿到 `rate_limited`。
 > 响应中的 `status` 为 `unknown` 时，表示后端已进入原生调用但结果不可知，**严禁自动重试**，否则可能重复发送。
 
+</details>
+
 ---
 
 ## 🧭 文档导航
@@ -258,6 +279,30 @@ with open(LOG, "r", encoding="utf-8", errors="replace") as log:
 | 🔐 **[微信版本 Profile](docs/profile.md)** | 逆向数据的 JSON 结构、构建期代码生成、适配新微信版本 |
 | 🛠️ **[构建与编译](docs/building.md)** | 工具链要求、CMake 预设与构建选项、工程结构、测试 |
 | 🧯 **[疑难排查](docs/troubleshooting.md)** | 构建失败、注入失败、观测不到消息 |
+
+---
+
+## 🧩 配套项目
+
+| 项目 | 说明 |
+| :--- | :--- |
+| 🐍 **[Plux](https://github.com/mnasthai/Botplux)** | **微信机器人的 Python 运行时**。架在 IRIS 之上，把帧编码、`hello` 握手、能力门禁、幂等去重、有效期、重试与送达证据全部封装掉，并额外提供插件模型、SQLite 事务数据域、内容寻址资产与可恢复的后台任务。要求 Python 3.11+，**零第三方依赖**。 |
+
+**IRIS 与 Plux 的分工**
+
+```
+你的业务插件  ──▶  Plux（Python 运行时：协议编排、状态、任务、数据）
+                        │  命名管道 + JSONL
+                        ▼
+                   IRIS（C++ 内核：注入微信、原生收发）
+                        │
+                        ▼
+                   微信桌面端 4.1.13.12
+```
+
+IRIS 只负责"把消息读出来、把消息发出去"这一层，不做业务编排。**如果你用 Python，直接用 Plux 即可，不需要照着本仓库的协议文档手写客户端。**
+
+两者之间的接口由[命令管道协议](docs/protocol.md)与[事件日志协议](docs/events.md)固定，因此你也可以用任何语言自行实现这一层。
 
 ---
 
